@@ -1,9 +1,22 @@
 // Constants and colors
-const DAY_WIDTH = 20; // Uniform width for day cells
+const DEFAULT_DAY_WIDTH = 20; // Default width for day cells
+let dayWidth = DEFAULT_DAY_WIDTH;
 const META_WIDTH = 80;
 const typeColors = ["#fb6262", "#ff9900", "#dada8a", "#6d9eeb"];
 let chartData = null;
 let visibleStart, visibleEnd;
+
+const zoomSlider = document.getElementById("zoomSlider");
+const zoomValue = document.getElementById("zoomValue");
+const downloadButton = document.getElementById("downloadPng");
+
+function updateZoomDisplay() {
+  const percentage = Math.round((dayWidth / DEFAULT_DAY_WIDTH) * 100);
+  if (zoomValue) {
+    zoomValue.textContent = `${percentage}%`;
+  }
+  document.documentElement.style.setProperty("--day-width", `${dayWidth}px`);
+}
 
 // Utility functions
 function parseDate(str) {
@@ -174,8 +187,8 @@ function renderTable() {
     }
     const th = document.createElement("th");
     th.colSpan = groupCount;
-    th.style.minWidth = `${groupCount * DAY_WIDTH}px`;
-    th.style.width = `${groupCount * DAY_WIDTH}px`;
+    th.style.minWidth = `${groupCount * dayWidth}px`;
+    th.style.width = `${groupCount * dayWidth}px`;
     th.style.height = "34.67px";
     th.textContent = formatDate(monday);
     trWeek.appendChild(th);
@@ -204,8 +217,8 @@ function renderTable() {
   visibleDays.forEach((dayStr, index) => {
     const th = document.createElement("th");
     th.className = "dayCell";
-    th.style.minWidth = `${DAY_WIDTH}px`;
-    th.style.width = `${DAY_WIDTH}px`;
+    th.style.minWidth = `${dayWidth}px`;
+    th.style.width = `${dayWidth}px`;
     const cellDate = addDays(visibleStart, index);
     if (isBreakDay(cellDate)) th.classList.add("breakCell");
     if (isMajorDate(cellDate)) {
@@ -282,8 +295,8 @@ function renderTable() {
     for (let i = 0; i < startIndex; i++) {
       const td = document.createElement("td");
       td.className = "dayCell";
-      td.style.minWidth = `${DAY_WIDTH}px`;
-      td.style.width = `${DAY_WIDTH}px`;
+      td.style.minWidth = `${dayWidth}px`;
+      td.style.width = `${dayWidth}px`;
       const cellDate = addDays(visibleStart, i);
       if (isBreakDay(cellDate)) td.classList.add("breakCell");
       if (isMajorDate(cellDate)) td.classList.add("majorDateCell");
@@ -294,8 +307,8 @@ function renderTable() {
     const tdTask = document.createElement("td");
     tdTask.className = "dayCell taskBar";
     tdTask.colSpan = duration;
-    tdTask.style.minWidth = `${DAY_WIDTH * duration}px`;
-    tdTask.style.width = `${DAY_WIDTH * duration}px`;
+    tdTask.style.minWidth = `${dayWidth * duration}px`;
+    tdTask.style.width = `${dayWidth * duration}px`;
     const color = typeColors[task.type % typeColors.length];
     tdTask.style.background = color;
     tdTask.style.color = "#fff";
@@ -331,8 +344,8 @@ function renderTable() {
     for (let i = added; i < totalDays; i++) {
       const td = document.createElement("td");
       td.className = "dayCell";
-      td.style.minWidth = `${DAY_WIDTH}px`;
-      td.style.width = `${DAY_WIDTH}px`;
+      td.style.minWidth = `${dayWidth}px`;
+      td.style.width = `${dayWidth}px`;
       const cellDate = addDays(visibleStart, i);
       if (isBreakDay(cellDate)) td.classList.add("breakCell");
       if (isMajorDate(cellDate)) td.classList.add("majorDateCell");
@@ -344,6 +357,63 @@ function renderTable() {
 }
 
 // File input: load JSON and initialize date range.
+if (zoomSlider) {
+  zoomSlider.value = `${DEFAULT_DAY_WIDTH}`;
+  zoomSlider.addEventListener("input", (event) => {
+    const newWidth = parseInt(event.target.value, 10);
+    if (!Number.isNaN(newWidth)) {
+      dayWidth = newWidth;
+      updateZoomDisplay();
+      if (chartData) {
+        renderTable();
+      }
+    }
+  });
+}
+
+updateZoomDisplay();
+
+if (downloadButton) {
+  downloadButton.addEventListener("click", () => {
+    if (!chartData || typeof html2canvas !== "function") {
+      alert("Please load chart data before downloading.");
+      return;
+    }
+
+    const originalText = downloadButton.textContent;
+    downloadButton.disabled = true;
+    downloadButton.textContent = "Preparing...";
+
+    const table = document.getElementById("ganttTable");
+    const previousBackground = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = "#ffffff";
+
+    html2canvas(table, {
+      backgroundColor: "#ffffff",
+      scale: 2,
+      scrollX: 0,
+      scrollY: -window.scrollY,
+    })
+      .then((canvas) => {
+        const link = document.createElement("a");
+        const defaultTitle = chartData && chartData.title ? chartData.title : "gantt-chart";
+        const safeTitle = defaultTitle.replace(/[^a-z0-9-_]+/gi, "_");
+        link.download = `${safeTitle || "gantt-chart"}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      })
+      .catch((error) => {
+        console.error("Error generating PNG:", error);
+        alert("Unable to generate PNG. Please try again.");
+      })
+      .finally(() => {
+        document.body.style.backgroundColor = previousBackground;
+        downloadButton.disabled = false;
+        downloadButton.textContent = originalText;
+      });
+  });
+}
+
 document.getElementById("fileInput").addEventListener("change", (e) => {
   const file = e.target.files[0];
   if (!file) return;
@@ -354,6 +424,9 @@ document.getElementById("fileInput").addEventListener("change", (e) => {
       document.getElementById("chartTitle").textContent = chartData.title;
       document.getElementById("rangeStart").value = chartData.global_start_date;
       document.getElementById("rangeEnd").value = chartData.global_end_date;
+      if (downloadButton) {
+        downloadButton.disabled = false;
+      }
       renderTable();
     } catch (error) {
       alert("Error parsing JSON: " + error);
@@ -386,6 +459,9 @@ window.addEventListener("load", () => {
       document.getElementById("chartTitle").textContent = chartData.title;
       document.getElementById("rangeStart").value = chartData.global_start_date;
       document.getElementById("rangeEnd").value = chartData.global_end_date;
+      if (downloadButton) {
+        downloadButton.disabled = false;
+      }
       renderTable();
     })
     .catch((error) => console.error("Error loading default JSON file:", error));
