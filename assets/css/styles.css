@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Header controls */
+#header {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#header h1 {
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+#header .controls {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Scroll container */
+#tableContainer {
+  overflow: auto;
+  height: calc(100vh - 100px);
+}
+
+/* Unified table styling: enforce uniform cell height */
+#ganttTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ganttTable th,
+#ganttTable td {
+  border: 0px solid #ccc;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px;
+  box-sizing: border-box;
+  height: 20px; /* Fixed height for every cell */
+}
+
+/* Fixed width for metadata columns */
+.fixed {
+  min-width: 80px;
+  max-width: 80px;
+  background: #fff;
+}
+
+/* Uniform day cells */
+.dayCell {
+  min-width: 20px;
+  max-width: 20px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+}
+
+/* Shading for break days */
+.breakCell {
+  background: #a4a4a4;
+}
+
+/* Red border for cells touching major dates */
+.majorDateCell {
+  border-left: 2px solid red !important;
+}
+
+/* Task cell style */
+.taskBar {
+  background: #1f77b4;
+  color: #fff;
+  border-radius: 3px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 100%;
+  line-height: 20px;
+}
+
+.important {
+  font-weight: bold;
+}
+
+/* Sticky header rows */
+thead tr.weekGroup th {
+  position: sticky;
+  top: 0;
+  background: #eee;
+  z-index: 11;
+  max-height: 34.67px;
+  min-height: 34.67px;
+}
+
+thead tr.dayHeader th {
+  position: sticky;
+  top: 34.67px;
+  background: #ddd;
+  z-index: 9;
+}
+
+/* Sticky left columns in header with higher z-index */
+thead .fixed:nth-child(1) {
+  left: 0;
+  z-index: 20;
+}
+
+thead .fixed:nth-child(2) {
+  left: 80px;
+  z-index: 20;
+}
+
+thead .fixed:nth-child(3) {
+  left: 160px;
+  z-index: 20;
+}
+
+thead .fixed:nth-child(4) {
+  left: 240px;
+  z-index: 20;
+}
+
+/* Sticky left columns in body */
+tbody .fixed {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tbody .fixed:nth-child(1) {
+  left: 0;
+}
+
+tbody .fixed:nth-child(2) {
+  left: 80px;
+}
+
+tbody .fixed:nth-child(3) {
+  left: 160px;
+}
+
+tbody .fixed:nth-child(4) {
+  left: 240px;
+}
+
+/* Tooltip styling */
+#tooltip {
+  position: absolute;
+  background: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 100;
+}
