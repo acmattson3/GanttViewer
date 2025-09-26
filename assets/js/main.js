@@ -2,7 +2,7 @@
 const DEFAULT_DAY_WIDTH = 20; // Default width for day cells
 let dayWidth = DEFAULT_DAY_WIDTH;
 const META_WIDTH = 80;
-const typeColors = ["#fb6262", "#ff9900", "#dada8a", "#6d9eeb"];
+const typeColors = ["#fb6262", "#ff9900", "#dada8a", "#8e7cc3", "#3c78d8"];
 let chartData = null;
 let visibleStart, visibleEnd;
 

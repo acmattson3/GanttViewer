@@ -2,14 +2,20 @@
   "title": "Aurora Robotics — Lunabotics 2026 PMP Schedule (Aligned & Updated Start)",
   "global_start_date": "2025-09-15",
   "global_end_date": "2026-06-30",
-  "types": ["NASA Review", "Engineering Task", "Testing/Validation/Risk Studies", "Internal Task"],
+  "types": [
+    "NASA Review",
+    "Engineering Task",
+    "Testing/Validation/Risk Studies",
+    "Internal Task",
+    "Software Task"
+  ],
   "tasks": [
     { "name": "Team Prep & Ramp-Up", "start_date": "2025-09-15", "end_date": "2025-09-28", "type": 3, "important": false },
 
     { "name": "PMP Development & Submission", "start_date": "2025-09-15", "end_date": "2025-09-29", "type": 3, "important": true },
 
-    { "name": "1.1 System Hierarchy & ICDs", "start_date": "2025-09-22", "end_date": "2025-10-12", "type": 3 },
-    { "name": "1.2 Mass/Power/Bandwidth Budgets", "start_date": "2025-09-29", "end_date": "2025-10-19", "type": 3 },
+    { "name": "1.1 System Hierarchy & ICDs", "start_date": "2025-09-22", "end_date": "2025-10-12", "type": 1 },
+    { "name": "1.2 Mass/Power/Bandwidth Budgets", "start_date": "2025-09-29", "end_date": "2025-10-19", "type": 1 },
     { "name": "1.3 CAD Envelope & Mounting Interfaces", "start_date": "2025-10-06", "end_date": "2025-10-26", "type": 1 },
 
     { "name": "2.1 Wheel CAD + Tread Selection", "start_date": "2025-09-22", "end_date": "2025-10-05", "type": 1 },
@@ -34,23 +40,23 @@
 
     { "name": "6.1 Camera/Sensor Selection", "start_date": "2025-09-29", "end_date": "2025-10-12", "type": 1 },
     { "name": "6.2 Sensor Mounts & Enclosures", "start_date": "2025-10-27", "end_date": "2025-11-16", "type": 1 },
-    { "name": "6.3 Sensor Driver Integration (Pi↔Arduinos)", "start_date": "2025-11-17", "end_date": "2025-12-14", "type": 1 },
+    { "name": "6.3 Sensor Driver Integration (Pi↔Arduinos)", "start_date": "2025-11-17", "end_date": "2025-12-14", "type": 4 },
     { "name": "6.4 Calibration & Time Sync", "start_date": "2025-12-15", "end_date": "2025-12-28", "type": 2 },
 
-    { "name": "7.1 Wi-Fi Link Budget & Architecture", "start_date": "2025-10-06", "end_date": "2025-10-19", "type": 3 },
-    { "name": "7.2 Telemetry Schema/Topics", "start_date": "2025-10-20", "end_date": "2025-11-02", "type": 3 },
-    { "name": "7.3 Delta-Frame Video Compression (POC)", "start_date": "2025-11-03", "end_date": "2025-11-30", "type": 1 },
+    { "name": "7.1 Wi-Fi Link Budget & Architecture", "start_date": "2025-10-06", "end_date": "2025-10-19", "type": 1 },
+    { "name": "7.2 Telemetry Schema/Topics", "start_date": "2025-10-20", "end_date": "2025-11-02", "type": 4 },
+    { "name": "7.3 Delta-Frame Video Compression (POC)", "start_date": "2025-11-03", "end_date": "2025-11-30", "type": 4 },
     { "name": "7.4 Bandwidth Tests (Arena-Sim / Net Monitor)", "start_date": "2025-12-01", "end_date": "2025-12-14", "type": 2 },
 
-    { "name": "9.1 LUMINSim World & Terrain Build", "start_date": "2025-09-22", "end_date": "2025-10-19", "type": 1 },
-    { "name": "9.2 Digital Twins (Wheel/Bucket Models)", "start_date": "2025-10-20", "end_date": "2025-11-09", "type": 1 },
+    { "name": "9.1 LUMINSim World & Terrain Build", "start_date": "2025-09-22", "end_date": "2025-10-19", "type": 4 },
+    { "name": "9.2 Digital Twins (Wheel/Bucket Models)", "start_date": "2025-10-20", "end_date": "2025-11-09", "type": 4 },
     { "name": "9.3 HIL Rig (Stretch Goal)", "start_date": "2025-12-08", "end_date": "2025-12-28", "type": 2 },
     { "name": "9.4 Physical Arena Bin Setup", "start_date": "2025-10-20", "end_date": "2025-11-16", "type": 1 },
 
-    { "name": "8.1 Navigation (Planner/Path, Sim-Driven)", "start_date": "2025-10-20", "end_date": "2025-11-16", "type": 1 },
-    { "name": "8.2 Perception (Vision+Fusion, Sim-Driven)", "start_date": "2025-11-03", "end_date": "2025-12-07", "type": 1 },
-    { "name": "8.3 Mission/Behavior Planner (Dig→Haul→Dump)", "start_date": "2025-12-08", "end_date": "2026-01-04", "type": 1 },
-    { "name": "8.4 Teleop & Autonomy Supervisor", "start_date": "2026-01-05", "end_date": "2026-01-25", "type": 1 },
+    { "name": "8.1 Navigation (Planner/Path, Sim-Driven)", "start_date": "2025-10-20", "end_date": "2025-11-16", "type": 4 },
+    { "name": "8.2 Perception (Vision+Fusion, Sim-Driven)", "start_date": "2025-11-03", "end_date": "2025-12-07", "type": 4 },
+    { "name": "8.3 Mission/Behavior Planner (Dig→Haul→Dump)", "start_date": "2025-12-08", "end_date": "2026-01-04", "type": 4 },
+    { "name": "8.4 Teleop & Autonomy Supervisor", "start_date": "2026-01-05", "end_date": "2026-01-25", "type": 4 },
 
     { "name": "SRR (Review)", "start_date": "2025-11-10", "end_date": "2025-11-15", "type": 0, "important": true },
     { "name": "PDR (Review)", "start_date": "2025-12-15", "end_date": "2025-12-20", "type": 0, "important": true },
