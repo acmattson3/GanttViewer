@@ -1,0 +1,431 @@
+{
+  "title": "X-Hab Fall 2026 Gantt Chart",
+  "global_start_date": "2025-08-25",
+  "global_end_date": "2026-05-08",
+  "tasks": [
+    {
+      "name": "Identify Team Roles & Meeting Plans",
+      "start_date": "2025-08-25",
+      "end_date": "2025-08-31",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Define Project Vision and Goals",
+      "start_date": "2025-08-25",
+      "end_date": "2025-09-11",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Develop Draft Work Breakdown Structure",
+      "start_date": "2025-09-01",
+      "end_date": "2025-09-14",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Start Stakeholder Needs Document",
+      "start_date": "2025-09-04",
+      "end_date": "2025-09-18",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Review Basic System Architecture",
+      "start_date": "2025-09-04",
+      "end_date": "2025-09-21",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Draft Concept of Operations",
+      "start_date": "2025-09-08",
+      "end_date": "2025-09-21",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Identify Software Functional Needs",
+      "start_date": "2025-09-08",
+      "end_date": "2025-09-21",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Identify Major Trades to Study",
+      "start_date": "2025-09-08",
+      "end_date": "2025-09-24",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Draft Level 1 Requirements",
+      "start_date": "2025-09-11",
+      "end_date": "2025-09-24",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Level 1 Requirements Flow Down to System",
+      "start_date": "2025-09-15",
+      "end_date": "2025-10-02",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Risk Assessment & Mitigations, Draft",
+      "start_date": "2025-09-19",
+      "end_date": "2025-10-08",
+      "type": 2,
+      "important": false
+    },
+    {
+      "name": "Review Approach to Analysis & Testing",
+      "start_date": "2025-09-19",
+      "end_date": "2025-09-25",
+      "type": 2,
+      "important": false
+    },
+    {
+      "name": "Review Gantt Chart & Foreseen Costs",
+      "start_date": "2025-09-19",
+      "end_date": "2025-10-12",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "System Definition Review Preparation",
+      "start_date": "2025-09-22",
+      "end_date": "2025-10-05",
+      "type": 0,
+      "important": true
+    },
+    {
+      "name": "Update Documents to Match SDR Discussion",
+      "start_date": "2025-10-06",
+      "end_date": "2025-10-12",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Develop Matured ConOps",
+      "start_date": "2025-10-06",
+      "end_date": "2025-10-19",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Develop Engineering Specialty Plans",
+      "start_date": "2025-10-06",
+      "end_date": "2025-10-19",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Risk Assessment & Mitigations, Mature",
+      "start_date": "2025-10-06",
+      "end_date": "2025-10-19",
+      "type": 2,
+      "important": false
+    },
+    {
+      "name": "Update Requirements Flowdown from SDR",
+      "start_date": "2025-10-13",
+      "end_date": "2025-10-23",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Complete Detailed Specs for Components",
+      "start_date": "2025-10-16",
+      "end_date": "2025-10-26",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Complete Trade Studies",
+      "start_date": "2025-09-22",
+      "end_date": "2025-10-26",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Complete Design Analyses/Simulations",
+      "start_date": "2025-10-16",
+      "end_date": "2025-11-02",
+      "type": 2,
+      "important": false
+    },
+    {
+      "name": "Make and Test Prototype Hardware",
+      "start_date": "2025-10-13",
+      "end_date": "2025-11-06",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Solve Internal & External Interfaces",
+      "start_date": "2025-10-17",
+      "end_date": "2025-11-06",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Draft System Operations",
+      "start_date": "2025-10-13",
+      "end_date": "2025-11-09",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Identify Potential Safety Issues",
+      "start_date": "2025-10-27",
+      "end_date": "2025-11-09",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Select Baseline Design Solution",
+      "start_date": "2025-10-17",
+      "end_date": "2025-11-09",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Preliminary Design Review Preparation",
+      "start_date": "2025-10-27",
+      "end_date": "2025-11-09",
+      "type": 0,
+      "important": true
+    },
+    {
+      "name": "Update Documents to Match PDR Discussion",
+      "start_date": "2025-11-10",
+      "end_date": "2025-11-16",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Finalize Gantt Chart & Cost Data",
+      "start_date": "2025-11-10",
+      "end_date": "2025-11-16",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Finalize ConOps",
+      "start_date": "2025-11-10",
+      "end_date": "2025-11-23",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Finalize Engineering Specialty Plans",
+      "start_date": "2025-11-14",
+      "end_date": "2025-11-30",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Finalize Risk Management Plan",
+      "start_date": "2025-11-17",
+      "end_date": "2025-12-03",
+      "type": 2,
+      "important": false
+    },
+    {
+      "name": "Update Requirements Flowdown from PDR",
+      "start_date": "2025-11-24",
+      "end_date": "2025-12-07",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Finalize Detailed Component Specs, CAD",
+      "start_date": "2025-12-01",
+      "end_date": "2025-12-14",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Finalize Design Analyses/Simulations",
+      "start_date": "2025-12-01",
+      "end_date": "2025-12-14",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Final Hardware Prototypes & Tests",
+      "start_date": "2025-12-08",
+      "end_date": "2026-01-15",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Finalize Interface Solutions",
+      "start_date": "2025-12-08",
+      "end_date": "2026-01-15",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Finalize System Operations",
+      "start_date": "2025-12-08",
+      "end_date": "2026-01-15",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Finalize Baseline Design Solution",
+      "start_date": "2025-12-08",
+      "end_date": "2026-01-15",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Critical Design Review Preparation",
+      "start_date": "2026-01-05",
+      "end_date": "2026-01-18",
+      "type": 0,
+      "important": true
+    },
+    {
+      "name": "Update Documents to Match CDR Discussion",
+      "start_date": "2026-01-19",
+      "end_date": "2026-01-25",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Freeze Final Design",
+      "start_date": "2026-01-19",
+      "end_date": "2026-02-04",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Parts Manufacturing",
+      "start_date": "2026-02-02",
+      "end_date": "2026-02-22",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Final Software Implementations",
+      "start_date": "2026-02-02",
+      "end_date": "2026-02-22",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "In-The-Loop Testing and Analysis",
+      "start_date": "2026-02-09",
+      "end_date": "2026-02-29",
+      "type": 2,
+      "important": false
+    },
+    {
+      "name": "Progress Checkpoint Review",
+      "start_date": "2026-02-22",
+      "end_date": "2026-03-07",
+      "type": 0,
+      "important": true
+    },
+    {
+      "name": "Final System Integrations",
+      "start_date": "2026-03-01",
+      "end_date": "2026-04-04",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Environmental (Vacuum) Testing",
+      "start_date": "2026-03-29",
+      "end_date": "2026-04-11",
+      "type": 2,
+      "important": false
+    },
+    {
+      "name": "Documented System Verification",
+      "start_date": "2026-04-05",
+      "end_date": "2026-04-18",
+      "type": 2,
+      "important": false
+    },
+    {
+      "name": "Record Final Demonstrations",
+      "start_date": "2026-04-12",
+      "end_date": "2026-04-18",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Final Documentation and Closing Up",
+      "start_date": "2026-04-12",
+      "end_date": "2026-04-25",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Final Review Preparation",
+      "start_date": "2026-04-19",
+      "end_date": "2026-05-05",
+      "type": 0,
+      "important": true
+    }
+  ],
+  "types": [
+    "NASA Review",
+    "Engineering Task",
+    "Testing/Validation/Risk Studies",
+    "Internal Task"
+  ],
+  "breaks": [
+    {
+      "name": "Fall Break",
+      "start_date": "2025-11-27",
+      "end_date": "2025-11-30"
+    },
+    {
+      "name": "Winter Break",
+      "start_date": "2025-12-15",
+      "end_date": "2026-01-11"
+    },
+    {
+      "name": "Spring Break",
+      "start_date": "2026-03-07",
+      "end_date": "2026-03-15"
+    }
+  ],
+  "major_dates": [
+    {
+      "name": "SDR",
+      "date": "2025-10-06"
+    },
+    {
+      "name": "PDR",
+      "date": "2025-11-10"
+    },
+    {
+      "name": "CDR",
+      "date": "2026-01-19"
+    },
+    {
+      "name": "PCR",
+      "date": "2026-03-08"
+    },
+    {
+      "name": "Final Review",
+      "date": "2026-05-06"
+    },
+    {
+      "name": "Hardware Complete",
+      "date": "2026-04-04"
+    },
+    {
+      "name": "Software Complete",
+      "date": "2026-02-23"
+    }
+  ]
+}
