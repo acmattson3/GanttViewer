@@ -12,6 +12,12 @@
       Start Date: <input type="date" id="rangeStart">
       End Date: <input type="date" id="rangeEnd">
       <button id="applyRange">Apply</button>
+      <label class="zoomControl">
+        Zoom:
+        <input type="range" id="zoomSlider" min="5" max="60" value="20">
+        <span id="zoomValue">100%</span>
+      </label>
+      <button id="downloadPng" disabled>Download PNG</button>
       <input type="file" id="fileInput" accept=".json">
     </div>
   </div>
@@ -27,6 +33,7 @@
   </div>
   <div id="tooltip"></div>
 
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
