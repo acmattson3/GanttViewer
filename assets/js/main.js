@@ -5,6 +5,7 @@ const META_WIDTH = 80;
 const typeColors = ["#fb6262", "#ff9900", "#dada8a", "#8e7cc3", "#3c78d8"];
 let chartData = null;
 let visibleStart, visibleEnd;
+const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
 const zoomSlider = document.getElementById("zoomSlider");
 const zoomValue = document.getElementById("zoomValue");
@@ -39,6 +40,20 @@ function addDays(date, days) {
   const result = new Date(date);
   result.setDate(result.getDate() + days);
   return result;
+}
+
+function startOfToday() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return today;
+}
+
+function isSameDay(dateA, dateB) {
+  return (
+    dateA.getFullYear() === dateB.getFullYear() &&
+    dateA.getMonth() === dateB.getMonth() &&
+    dateA.getDate() === dateB.getDate()
+  );
 }
 
 function getMonday(date) {
@@ -149,6 +164,7 @@ function renderTable() {
   visibleEnd = parseDate(document.getElementById("rangeEnd").value);
   const visibleDays = buildVisibleDays();
   const totalDays = visibleDays.length;
+  const today = startOfToday();
 
   // Sort tasks by end date (soonest end date first)
   chartData.tasks.sort((a, b) => parseDate(a.end_date) - parseDate(b.end_date));
@@ -228,6 +244,10 @@ function renderTable() {
     } else {
       th.textContent = "";
     }
+    if (isSameDay(cellDate, today)) {
+      th.classList.add("currentDateCell");
+      th.style.zIndex = "12";
+    }
     trDay.appendChild(th);
   });
   thead.appendChild(trDay);
@@ -276,6 +296,14 @@ function renderTable() {
     const totalTaskDays = daysBetween(taskStart, taskEnd);
     const breakDays = calculateBreakOverlap(taskStart, taskEnd, chartData.breaks);
     const activeDays = totalTaskDays - breakDays;
+    const dueDifference = Math.floor((taskEnd - today) / MS_PER_DAY);
+    let dueStatusText = "Due today";
+    if (dueDifference > 0) {
+      dueStatusText = `${dueDifference} day${dueDifference === 1 ? "" : "s"} until due`;
+    } else if (dueDifference < 0) {
+      const overdue = Math.abs(dueDifference);
+      dueStatusText = `${overdue} day${overdue === 1 ? "" : "s"} overdue`;
+    }
     const tdDays = document.createElement("td");
     tdDays.textContent =
       totalTaskDays + (breakDays > 0 ? ` (${activeDays})` : "");
@@ -300,6 +328,7 @@ function renderTable() {
       const cellDate = addDays(visibleStart, i);
       if (isBreakDay(cellDate)) td.classList.add("breakCell");
       if (isMajorDate(cellDate)) td.classList.add("majorDateCell");
+      if (isSameDay(cellDate, today)) td.classList.add("currentDateCell");
       tr.appendChild(td);
     }
 
@@ -310,13 +339,13 @@ function renderTable() {
     tdTask.style.minWidth = `${dayWidth * duration}px`;
     tdTask.style.width = `${dayWidth * duration}px`;
     const color = typeColors[task.type % typeColors.length];
-    tdTask.style.background = color;
+      tdTask.style.background = color;
     tdTask.style.color = "#fff";
     tdTask.textContent = task.name;
     if (task.important) {
       tdTask.classList.add("important");
     }
-    tdTask.addEventListener("mouseover", (e) => {
+    tdTask.addEventListener("mouseover", () => {
       const tooltip = document.getElementById("tooltip");
       tooltip.innerHTML = `<strong>${task.name}</strong><br>
                                Start: ${task.start_date}<br>
@@ -325,7 +354,8 @@ function renderTable() {
                                High Priority: ${task.important ? "Yes" : "No"}<br>
                                Days: ${totalTaskDays}${
                                  breakDays > 0 ? ` (${activeDays})` : ""
-                               }`;
+                               }<br>
+                               ${dueStatusText}`;
       tooltip.style.opacity = 1;
     });
     tdTask.addEventListener("mousemove", (e) => {
@@ -349,10 +379,83 @@ function renderTable() {
       const cellDate = addDays(visibleStart, i);
       if (isBreakDay(cellDate)) td.classList.add("breakCell");
       if (isMajorDate(cellDate)) td.classList.add("majorDateCell");
+      if (isSameDay(cellDate, today)) td.classList.add("currentDateCell");
       tr.appendChild(td);
     }
 
     tbody.appendChild(tr);
+  });
+  updateStickyOffset();
+  renderDateLines(visibleDays, today);
+}
+
+function createDateLine(className, left, top, height, tooltipContent) {
+  const line = document.createElement("div");
+  line.className = `dateLine ${className}`;
+  line.style.left = `${left}px`;
+  line.style.top = `${top}px`;
+  line.style.height = `${height}px`;
+
+  if (tooltipContent) {
+    line.addEventListener("mouseover", () => {
+      const tooltip = document.getElementById("tooltip");
+      if (!tooltip) return;
+      tooltip.innerHTML = tooltipContent;
+      tooltip.style.opacity = 1;
+    });
+    line.addEventListener("mousemove", (e) => {
+      const tooltip = document.getElementById("tooltip");
+      if (!tooltip) return;
+      tooltip.style.left = `${e.pageX + 10}px`;
+      tooltip.style.top = `${e.pageY + 10}px`;
+    });
+    line.addEventListener("mouseout", () => {
+      const tooltip = document.getElementById("tooltip");
+      if (!tooltip) return;
+      tooltip.style.opacity = 0;
+    });
+  }
+
+  return line;
+}
+
+function updateStickyOffset() {
+  const thead = document.getElementById("ganttThead");
+  if (!thead) return;
+  document.documentElement.style.setProperty("--sticky-body-offset", `${thead.offsetHeight}px`);
+}
+
+function renderDateLines(visibleDays, today) {
+  const overlay = document.getElementById("dateLinesOverlay");
+  const table = document.getElementById("ganttTable");
+  if (!overlay || !table) return;
+
+  overlay.innerHTML = "";
+  overlay.style.width = `${table.scrollWidth}px`;
+  overlay.style.top = "0px";
+  const tableHeight = table.offsetHeight;
+  overlay.style.height = `${tableHeight}px`;
+
+  const dayHeaderCells = document.querySelectorAll("#ganttThead tr.dayHeader th.dayCell");
+  const tableRect = table.getBoundingClientRect();
+
+  dayHeaderCells.forEach((cell, index) => {
+    const cellRect = cell.getBoundingClientRect();
+    const cellLeft = cellRect.left - tableRect.left;
+    const columnDate = addDays(visibleStart, index);
+
+    if (isMajorDate(columnDate)) {
+      const title = getMajorDateTitle(columnDate);
+      const content = title
+        ? `<strong>${title}</strong><br>${formatDate(columnDate)}`
+        : formatDate(columnDate);
+      overlay.appendChild(createDateLine("dateLine--major", cellLeft, 0, tableHeight, content));
+    }
+
+    if (isSameDay(columnDate, today)) {
+      const content = `<strong>Today</strong><br>${formatDate(columnDate)}`;
+      overlay.appendChild(createDateLine("dateLine--current", cellLeft, 0, tableHeight, content));
+    }
   });
 }
 
@@ -384,11 +487,26 @@ if (downloadButton) {
     downloadButton.disabled = true;
     downloadButton.textContent = "Preparing...";
 
-    const table = document.getElementById("ganttTable");
+    const captureTarget = document.getElementById("tableInner");
+    const overlay = document.getElementById("dateLinesOverlay");
+    if (!captureTarget) {
+      alert("Unable to locate chart for download.");
+      downloadButton.disabled = false;
+      downloadButton.textContent = originalText;
+      return;
+    }
     const previousBackground = document.body.style.backgroundColor;
     document.body.style.backgroundColor = "#ffffff";
 
-    html2canvas(table, {
+    const currentLines = overlay
+      ? Array.from(overlay.querySelectorAll(".dateLine--current"))
+      : [];
+    const previousDisplays = currentLines.map((line) => line.style.display);
+    currentLines.forEach((line) => {
+      line.style.display = "none";
+    });
+
+    html2canvas(captureTarget, {
       backgroundColor: "#ffffff",
       scale: 2,
       scrollX: 0,
@@ -408,6 +526,9 @@ if (downloadButton) {
       })
       .finally(() => {
         document.body.style.backgroundColor = previousBackground;
+        currentLines.forEach((line, index) => {
+          line.style.display = previousDisplays[index];
+        });
         downloadButton.disabled = false;
         downloadButton.textContent = originalText;
       });
