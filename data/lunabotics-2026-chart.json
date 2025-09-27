@@ -1,5 +1,5 @@
 {
-  "title": "Aurora Robotics — Lunabotics 2026 PMP Schedule (Aligned & Updated Start)",
+  "title": "Aurora Robotics Lab: Lunabotics 2026 Gantt Chart",
   "global_start_date": "2025-09-15",
   "global_end_date": "2026-06-30",
   "types": [
@@ -12,7 +12,7 @@
   "tasks": [
     { "name": "Team Prep & Ramp-Up", "start_date": "2025-09-15", "end_date": "2025-09-28", "type": 3, "important": false },
 
-    { "name": "PMP Development & Submission", "start_date": "2025-09-15", "end_date": "2025-09-29", "type": 3, "important": true },
+    { "name": "PMP Development & Submission", "start_date": "2025-09-15", "end_date": "2025-09-28", "type": 3, "important": true },
 
     { "name": "1.1 System Hierarchy & ICDs", "start_date": "2025-09-22", "end_date": "2025-10-12", "type": 1 },
     { "name": "1.2 Mass/Power/Bandwidth Budgets", "start_date": "2025-09-29", "end_date": "2025-10-19", "type": 1 },
@@ -41,7 +41,7 @@
     { "name": "6.1 Camera/Sensor Selection", "start_date": "2025-09-29", "end_date": "2025-10-12", "type": 1 },
     { "name": "6.2 Sensor Mounts & Enclosures", "start_date": "2025-10-27", "end_date": "2025-11-16", "type": 1 },
     { "name": "6.3 Sensor Driver Integration (Pi↔Arduinos)", "start_date": "2025-11-17", "end_date": "2025-12-14", "type": 4 },
-    { "name": "6.4 Calibration & Time Sync", "start_date": "2025-12-15", "end_date": "2025-12-28", "type": 2 },
+    { "name": "6.4 Calibration & Time Sync", "start_date": "2025-12-08", "end_date": "2025-12-21", "type": 2 },
 
     { "name": "7.1 Wi-Fi Link Budget & Architecture", "start_date": "2025-10-06", "end_date": "2025-10-19", "type": 1 },
     { "name": "7.2 Telemetry Schema/Topics", "start_date": "2025-10-20", "end_date": "2025-11-02", "type": 4 },
@@ -55,12 +55,12 @@
 
     { "name": "8.1 Navigation (Planner/Path, Sim-Driven)", "start_date": "2025-10-20", "end_date": "2025-11-16", "type": 4 },
     { "name": "8.2 Perception (Vision+Fusion, Sim-Driven)", "start_date": "2025-11-03", "end_date": "2025-12-07", "type": 4 },
-    { "name": "8.3 Mission/Behavior Planner (Dig→Haul→Dump)", "start_date": "2025-12-08", "end_date": "2026-01-04", "type": 4 },
+    { "name": "8.3 Mission/Behavior Planner (Dig→Haul→Dump)", "start_date": "2025-12-08", "end_date": "2026-01-13", "type": 4 },
     { "name": "8.4 Teleop & Autonomy Supervisor", "start_date": "2026-01-05", "end_date": "2026-01-25", "type": 4 },
 
-    { "name": "SRR (Review)", "start_date": "2025-11-07", "end_date": "2025-11-14", "type": 0, "important": true },
-    { "name": "PDR (Review)", "start_date": "2025-12-04", "end_date": "2025-12-11", "type": 0, "important": true },
-    { "name": "CDR (Review)", "start_date": "2026-01-30", "end_date": "2026-02-05", "type": 0, "important": true },
+    { "name": "SRR (Review)", "start_date": "2025-11-07", "end_date": "2025-11-13", "type": 0, "important": true },
+    { "name": "PDR (Review)", "start_date": "2025-12-04", "end_date": "2025-12-10", "type": 0, "important": true },
+    { "name": "CDR (Review)", "start_date": "2026-01-30", "end_date": "2026-02-04", "type": 0, "important": true },
 
     { "name": "10.1 Subsystem Integration (Incremental)", "start_date": "2025-12-22", "end_date": "2026-04-02", "type": 1, "important": true },
     { "name": "10.2 End-to-End Mobility+Excavation Testing", "start_date": "2026-03-25", "end_date": "2026-04-30", "type": 2, "important": true },
