@@ -58,9 +58,9 @@
     { "name": "8.3 Mission/Behavior Planner (Dig→Haul→Dump)", "start_date": "2025-12-08", "end_date": "2026-01-04", "type": 4 },
     { "name": "8.4 Teleop & Autonomy Supervisor", "start_date": "2026-01-05", "end_date": "2026-01-25", "type": 4 },
 
-    { "name": "SRR (Review)", "start_date": "2025-11-10", "end_date": "2025-11-15", "type": 0, "important": true },
-    { "name": "PDR (Review)", "start_date": "2025-12-15", "end_date": "2025-12-20", "type": 0, "important": true },
-    { "name": "CDR (Review)", "start_date": "2026-02-02", "end_date": "2026-02-07", "type": 0, "important": true },
+    { "name": "SRR (Review)", "start_date": "2025-11-07", "end_date": "2025-11-14", "type": 0, "important": true },
+    { "name": "PDR (Review)", "start_date": "2025-12-04", "end_date": "2025-12-11", "type": 0, "important": true },
+    { "name": "CDR (Review)", "start_date": "2026-01-30", "end_date": "2026-02-05", "type": 0, "important": true },
 
     { "name": "10.1 Subsystem Integration (Incremental)", "start_date": "2025-12-22", "end_date": "2026-04-02", "type": 1, "important": true },
     { "name": "10.2 End-to-End Mobility+Excavation Testing", "start_date": "2026-03-25", "end_date": "2026-04-30", "type": 2, "important": true },
