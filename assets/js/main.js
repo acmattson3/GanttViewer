@@ -1,11 +1,43 @@
 // Constants and colors
 const DEFAULT_DAY_WIDTH = 20; // Default width for day cells
 let dayWidth = DEFAULT_DAY_WIDTH;
-const META_WIDTH = 80;
 const typeColors = ["#fb6262", "#ff9900", "#dada8a", "#8e7cc3", "#3c78d8"];
 let chartData = null;
 let visibleStart, visibleEnd;
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+const META_COLUMNS = [
+  { key: "task", label: "Tasks", width: 160 },
+  { key: "start", label: "Start", width: 80 },
+  { key: "end", label: "End", width: 80 },
+  { key: "days", label: "Days", width: 60 },
+];
+
+const META_OFFSETS = META_COLUMNS.map((_, index) =>
+  META_COLUMNS.slice(0, index).reduce((sum, col) => sum + col.width, 0)
+);
+
+META_COLUMNS.forEach((column) => {
+  document.documentElement.style.setProperty(
+    `--meta-${column.key}-width`,
+    `${column.width}px`
+  );
+});
+
+function getMetaOffset(index) {
+  return META_OFFSETS[index] || 0;
+}
+
+function applyMetaColumnSizing(cell, columnIndex, isHeader = false) {
+  const column = META_COLUMNS[columnIndex];
+  cell.className = `fixed fixed--${column.key}`;
+  cell.style.minWidth = `${column.width}px`;
+  cell.style.width = `${column.width}px`;
+  cell.style.left = `${getMetaOffset(columnIndex)}px`;
+  if (isHeader) {
+    cell.style.zIndex = "20";
+  }
+}
 
 const zoomSlider = document.getElementById("zoomSlider");
 const zoomValue = document.getElementById("zoomValue");
@@ -177,15 +209,13 @@ function renderTable() {
   const trWeek = document.createElement("tr");
   trWeek.className = "weekGroup";
 
-  // First 4 fixed columns (blank)
-  for (let i = 0; i < 4; i++) {
+  // First fixed columns (blank)
+  META_COLUMNS.forEach((_, index) => {
     const th = document.createElement("th");
-    th.className = "fixed";
-    th.style.minWidth = `${META_WIDTH}px`;
-    th.style.width = `${META_WIDTH}px`;
+    applyMetaColumnSizing(th, index, true);
     th.textContent = "";
     trWeek.appendChild(th);
-  }
+  });
 
   // Group visible days by week (each group shows the Monday date)
   let i = 0;
@@ -215,19 +245,12 @@ function renderTable() {
   // Second header row: one cell per visible day, preceded by metadata headers.
   const trDay = document.createElement("tr");
   trDay.className = "dayHeader";
-  const headers = ["Tasks", "Start", "End", "Days"];
-  for (let j = 0; j < 4; j++) {
+  META_COLUMNS.forEach((column, index) => {
     const th = document.createElement("th");
-    th.textContent = headers[j];
-    th.className = "fixed";
-    th.style.minWidth = `${META_WIDTH}px`;
-    th.style.width = `${META_WIDTH}px`;
-    if (j === 0) th.style.left = "0px";
-    if (j === 1) th.style.left = `${META_WIDTH}px`;
-    if (j === 2) th.style.left = `${META_WIDTH * 2}px`;
-    if (j === 3) th.style.left = `${META_WIDTH * 3}px`;
+    th.textContent = column.label;
+    applyMetaColumnSizing(th, index, true);
     trDay.appendChild(th);
-  }
+  });
 
   // Create one header cell per visible day.
   visibleDays.forEach((dayStr, index) => {
@@ -265,11 +288,7 @@ function renderTable() {
     // Fixed metadata cells (sticky left)
     const tdName = document.createElement("td");
     tdName.textContent = task.name;
-    tdName.className = "fixed";
-    tdName.style.minWidth = `${META_WIDTH}px`;
-    tdName.style.width = `${META_WIDTH}px`;
-    tdName.style.position = "sticky";
-    tdName.style.left = "0px";
+    applyMetaColumnSizing(tdName, 0);
     if (task.important) {
       tdName.classList.add("important");
     }
@@ -277,20 +296,12 @@ function renderTable() {
 
     const tdStart = document.createElement("td");
     tdStart.textContent = task.start_date;
-    tdStart.className = "fixed";
-    tdStart.style.minWidth = `${META_WIDTH}px`;
-    tdStart.style.width = `${META_WIDTH}px`;
-    tdStart.style.position = "sticky";
-    tdStart.style.left = `${META_WIDTH}px`;
+    applyMetaColumnSizing(tdStart, 1);
     tr.appendChild(tdStart);
 
     const tdEnd = document.createElement("td");
     tdEnd.textContent = task.end_date;
-    tdEnd.className = "fixed";
-    tdEnd.style.minWidth = `${META_WIDTH}px`;
-    tdEnd.style.width = `${META_WIDTH}px`;
-    tdEnd.style.position = "sticky";
-    tdEnd.style.left = `${META_WIDTH * 2}px`;
+    applyMetaColumnSizing(tdEnd, 2);
     tr.appendChild(tdEnd);
 
     const totalTaskDays = daysBetween(taskStart, taskEnd);
@@ -307,11 +318,7 @@ function renderTable() {
     const tdDays = document.createElement("td");
     tdDays.textContent =
       totalTaskDays + (breakDays > 0 ? ` (${activeDays})` : "");
-    tdDays.className = "fixed";
-    tdDays.style.minWidth = `${META_WIDTH}px`;
-    tdDays.style.width = `${META_WIDTH}px`;
-    tdDays.style.position = "sticky";
-    tdDays.style.left = `${META_WIDTH * 3}px`;
+    applyMetaColumnSizing(tdDays, 3);
     tr.appendChild(tdDays);
 
     const activeStart = taskStart < visibleStart ? visibleStart : taskStart;

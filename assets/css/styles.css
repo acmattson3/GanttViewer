@@ -1,11 +1,18 @@
 :root {
   --day-width: 20px;
   --sticky-body-offset: 54.67px;
+  --meta-task-width: 160px;
+  --meta-start-width: 80px;
+  --meta-end-width: 80px;
+  --meta-days-width: 60px;
+  --font-size-base: 14px;
+  --font-size-task: calc(var(--font-size-base) * 1.5);
 }
 
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  font-size: 1.18rem;
 }
 
 /* Header controls */
@@ -56,17 +63,36 @@ body {
 #ganttTable td {
   border: 0px solid #ccc;
   text-align: center;
-  font-size: 12px;
-  padding: 4px;
+  font-size: var(--font-size-base);
+  padding: 6px;
   box-sizing: border-box;
-  height: 20px; /* Fixed height for every cell */
+  height: 32px; /* Increased fixed height for readability */
+  vertical-align: middle;
 }
 
 /* Fixed width for metadata columns */
 .fixed {
-  min-width: 80px;
-  max-width: 80px;
   background: #fff;
+}
+
+.fixed--task {
+  min-width: var(--meta-task-width);
+  max-width: var(--meta-task-width);
+}
+
+.fixed--start {
+  min-width: var(--meta-start-width);
+  max-width: var(--meta-start-width);
+}
+
+.fixed--end {
+  min-width: var(--meta-end-width);
+  max-width: var(--meta-end-width);
+}
+
+.fixed--days {
+  min-width: var(--meta-days-width);
+  max-width: var(--meta-days-width);
 }
 
 /* Uniform day cells */
@@ -74,8 +100,8 @@ body {
   min-width: var(--day-width);
   max-width: var(--day-width);
   width: var(--day-width);
-  height: 20px;
-  line-height: 20px;
+  height: 32px;
+  line-height: 32px;
   padding: 0;
 }
 
@@ -131,7 +157,9 @@ thead tr.dayHeader .currentDateCell {
   overflow: hidden;
   white-space: nowrap;
   height: 100%;
-  line-height: 20px;
+  line-height: 32px;
+  padding: 0 8px;
+  font-size: var(--font-size-task);
 }
 
 .important {
@@ -155,49 +183,12 @@ thead tr.dayHeader th {
   z-index: 9;
 }
 
-/* Sticky left columns in header with higher z-index */
-thead .fixed:nth-child(1) {
-  left: 0;
-  z-index: 20;
-}
-
-thead .fixed:nth-child(2) {
-  left: 80px;
-  z-index: 20;
-}
-
-thead .fixed:nth-child(3) {
-  left: 160px;
-  z-index: 20;
-}
-
-thead .fixed:nth-child(4) {
-  left: 240px;
-  z-index: 20;
-}
-
 /* Sticky left columns in body */
 tbody .fixed {
   position: sticky;
   top: var(--sticky-body-offset);
   z-index: 25;
   background: #fff;
-}
-
-tbody .fixed:nth-child(1) {
-  left: 0;
-}
-
-tbody .fixed:nth-child(2) {
-  left: 80px;
-}
-
-tbody .fixed:nth-child(3) {
-  left: 160px;
-}
-
-tbody .fixed:nth-child(4) {
-  left: 240px;
 }
 
 /* Tooltip styling */
@@ -207,7 +198,7 @@ tbody .fixed:nth-child(4) {
   color: #fff;
   padding: 5px;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: 14px;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.2s;

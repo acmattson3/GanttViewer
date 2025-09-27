@@ -1,0 +1,130 @@
+{
+  "title": "Aurora Robotics Lunabotics 2026 High-Level Gantt Chart",
+  "global_start_date": "2025-09-25",
+  "global_end_date": "2026-05-15",
+  "tasks": [
+    {
+      "name": "Team Preparation & Project Setup",
+      "start_date": "2025-09-25",
+      "end_date": "2025-09-30",
+      "type": 3,
+      "important": true
+    },
+    {
+      "name": "System Design & Architecture",
+      "start_date": "2025-09-25",
+      "end_date": "2025-10-15",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Subsystem Development – Hardware",
+      "start_date": "2025-10-01",
+      "end_date": "2025-12-15",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Subsystem Development – Software",
+      "start_date": "2025-10-01",
+      "end_date": "2025-12-15",
+      "type": 3,
+      "important": false
+    },
+    {
+      "name": "Preliminary Design Freeze & Review (PDR)",
+      "start_date": "2025-11-10",
+      "end_date": "2025-11-17",
+      "type": 0,
+      "important": true
+    },
+    {
+      "name": "Integration Phase I",
+      "start_date": "2025-12-16",
+      "end_date": "2026-01-31",
+      "type": 1,
+      "important": false
+    },
+    {
+      "name": "Critical Design Review (CDR)",
+      "start_date": "2026-01-19",
+      "end_date": "2026-01-25",
+      "type": 0,
+      "important": true
+    },
+    {
+      "name": "Integration Phase II & Testing",
+      "start_date": "2026-02-01",
+      "end_date": "2026-03-31",
+      "type": 2,
+      "important": false
+    },
+    {
+      "name": "Proof-of-Life & Deliverables",
+      "start_date": "2026-04-01",
+      "end_date": "2026-04-30",
+      "type": 0,
+      "important": true
+    },
+    {
+      "name": "Final Testing & Competition",
+      "start_date": "2026-05-01",
+      "end_date": "2026-05-15",
+      "type": 2,
+      "important": true
+    }
+  ],
+  "types": [
+    "NASA Review",
+    "Engineering Task",
+    "Testing/Validation",
+    "Internal Task"
+  ],
+  "breaks": [
+    {
+      "name": "Fall Break",
+      "start_date": "2025-11-27",
+      "end_date": "2025-11-30"
+    },
+    {
+      "name": "Winter Break",
+      "start_date": "2025-12-15",
+      "end_date": "2026-01-11"
+    },
+    {
+      "name": "Spring Break",
+      "start_date": "2026-03-07",
+      "end_date": "2026-03-15"
+    }
+  ],
+  "major_dates": [
+    {
+      "name": "PMP Due",
+      "date": "2025-09-29"
+    },
+    {
+      "name": "SRR",
+      "date": "2025-10-06"
+    },
+    {
+      "name": "PDR",
+      "date": "2025-11-10"
+    },
+    {
+      "name": "CDR",
+      "date": "2026-01-19"
+    },
+    {
+      "name": "SEP Due",
+      "date": "2026-04-02"
+    },
+    {
+      "name": "RDF + PoL Due",
+      "date": "2026-04-30"
+    },
+    {
+      "name": "Competition",
+      "date": "2026-05-12"
+    }
+  ]
+}
