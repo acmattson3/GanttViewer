@@ -79,9 +79,9 @@
   ],
   "major_dates": [
     { "name": "PMP Due", "date": "2025-09-29" },
-    { "name": "SRR", "date": "2025-11-15" },
-    { "name": "PDR", "date": "2025-12-20" },
-    { "name": "CDR", "date": "2026-02-07" },
+    { "name": "SRR", "date": "2025-11-14" },
+    { "name": "PDR", "date": "2025-12-11" },
+    { "name": "CDR", "date": "2026-02-05" },
     { "name": "Systems Engineering Paper Due", "date": "2026-04-02" },
     { "name": "Proof of Life Due", "date": "2026-04-30" },
     { "name": "Robot Data Files Due", "date": "2026-04-30" }
