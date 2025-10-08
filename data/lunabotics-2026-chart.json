@@ -69,8 +69,7 @@
 
     { "name": "11.1 Bed Attachment Interface Design", "start_date": "2026-05-22", "end_date": "2026-06-14", "type": 1 },
     { "name": "11.2 Modular Tool Mounts", "start_date": "2026-06-15", "end_date": "2026-07-13", "type": 1 },
-    { "name": "11.3 Integration & Fit Testing", "start_date": "2026-07-14", "end_date": "2026-08-07", "type": 2 }
-
+    { "name": "11.3 Integration & Fit Testing", "start_date": "2026-07-14", "end_date": "2026-08-07", "type": 2 },
 
     { "name": "UCF Exolith Lab Qualifier (Event)", "start_date": "2026-05-12", "end_date": "2026-05-17", "type": 0, "important": true },
     { "name": "KSC Lunabotics On-Site Challenge (Event)", "start_date": "2026-05-19", "end_date": "2026-05-21", "type": 0, "important": true },
