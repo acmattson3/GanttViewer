@@ -67,7 +67,7 @@
     { "name": "10.3 Energy & Efficiency Trials (m³/kWh)", "start_date": "2026-03-25", "end_date": "2026-04-25", "type": 2 },
     { "name": "10.4 Full Mission Rehearsal / PoL Polish", "start_date": "2026-05-01", "end_date": "2026-05-10", "type": 2, "important": true },
 
-    { "name": "11.1 Bed Attachment Interface Design", "start_date": "2026-05-22", "end_date": "2026-06-14", "type": 1 },
+    { "name": "11.1 Bed Attachment Interface Design", "start_date": "2026-05-22", "end_date": "2026-06-27", "type": 1 },
     { "name": "11.2 Modular Tool Mounts", "start_date": "2026-06-07", "end_date": "2026-07-13", "type": 1 },
     { "name": "11.3 Integration & Fit Testing", "start_date": "2026-07-01", "end_date": "2026-08-07", "type": 2 },
 
